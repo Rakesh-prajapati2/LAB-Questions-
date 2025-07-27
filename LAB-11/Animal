@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+// Superclass
+class Animal {
+    void makeSound() {
+        System.out.println("The animal makes a sound.");
+    }
+}
+
+// Intermediate class (optional for multilevel structure)
+class Mammal extends Animal {
+    // You can extend or override here if needed in future
+}
+
+// Dog subclass
+class Dog extends Mammal {
+    @Override
+    void makeSound() {
+        System.out.println("The dog barks.");
+    }
+}
+
+// Cat subclass
+class Cat extends Mammal {
+    @Override
+    void makeSound() {
+        System.out.println("The cat meows.");
+    }
+}
+
+// Main class
+public class AnimalSound {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose an animal to hear its sound:");
+        System.out.println("1. Animal\n2. Dog\n3. Cat");
+        int choice = sc.nextInt();
+
+        Animal a;
+        switch (choice) {
+            case 1:
+                a = new Animal();
+                break;
+            case 2:
+                a = new Dog();
+                break;
+            case 3:
+                a = new Cat();
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to Animal.");
+                a = new Animal();
+        }
+
+        a.makeSound();
+        sc.close();
+    }
+}
