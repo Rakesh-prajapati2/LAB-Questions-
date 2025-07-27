@@ -1,0 +1,51 @@
+// Student class
+class Student {
+    String name;
+    int age;
+    String department;
+
+    // Default constructor
+    Student() {
+        name = "Unknown";
+        age = 20;
+        department = "Unassigned";
+    }
+
+    // Constructor with name and age
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+        this.department = "IT";
+    }
+
+    // Constructor with name, age, and department
+    Student(String name, int age, String department) {
+        this.name = name;
+        this.age = age;
+        this.department = department;
+    }
+
+    // Method to print student details
+    void printDetails() {
+        System.out.println("Name: " + name + ", Age: " + age + ", Department: " + department);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Using default constructor
+        Student student1 = new Student();
+
+        // Using constructor with name and age
+        Student student2 = new Student("Alice", 22);
+
+        // Using constructor with name, age, and department
+        Student student3 = new Student("Bob", 25, "Computer Science");
+
+        // Print student details
+        student1.printDetails();
+        student2.printDetails();
+        student3.printDetails();
+    }
+}
