@@ -1,0 +1,28 @@
+class BankAccount {
+    String accountHolderName;
+    BankName bankName; // Use enum type
+    double accountBalance;
+
+    // Constructor
+    BankAccount(double accountBalance, String accountHolderName, BankName bankName) {
+        this.accountHolderName = accountHolderName;
+        this.bankName = bankName;
+        this.accountBalance = accountBalance;
+    }
+
+    // Method to calculate interest
+    double calculateInterest(int numberOfYears) {
+        double interestRate = bankName.getInterestRate();
+        double totalInterest = (interestRate / 100) * numberOfYears * accountBalance;
+        return totalInterest;
+    }
+
+    // Display account info
+    void display() {
+        System.out.println("Account Holder: " + accountHolderName);
+        System.out.println("Bank Name: " + bankName);
+        System.out.println("Account Balance: " + accountBalance);
+        System.out.println("Interest Rate: " + bankName.getInterestRate() + "%");
+        System.out.println("----------------------------------");
+    }
+}
