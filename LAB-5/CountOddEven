@@ -1,0 +1,46 @@
+// Base class
+class Vehicle {
+    void start() {
+        System.out.println("Vehicle started.");
+    }
+}
+
+// Subclass Car
+class Car extends Vehicle {
+    @Override
+    void start() {
+        System.out.println("Car started.");
+    }
+}
+
+// Subclass Motorcycle
+class Motorcycle extends Vehicle {
+    @Override
+    void start() {
+        System.out.println("Motorcycle started.");
+    }
+}
+
+// Garage class
+class Garage {
+    void serviceVehicle(Vehicle vehicle) {
+        vehicle.start();  // Polymorphic call
+        System.out.println("Vehicle serviced.");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        Motorcycle bike = new Motorcycle();
+
+        Garage garage = new Garage();
+
+        // Service the car
+        garage.serviceVehicle(car);
+
+        // Service the motorcycle
+        garage.serviceVehicle(bike);
+    }
+}
