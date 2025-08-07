@@ -1,0 +1,47 @@
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import java.text.NumberFormat;
+
+public class DateTimeExample {
+    public static void main(String[] args) {
+
+        // Task 1: Create and format LocalDateTime
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String formattedDate = now.format(formatter);
+        System.out.println("Formatted current date and time: " + formattedDate);
+
+        // Task 2: Print names of all months and days in each month (non-leap year)
+        System.out.println("\nMonths and number of days (Non-Leap Year):");
+        for (Month month : Month.values()) {
+            int days = month.length(false);  // false for non-leap year
+            System.out.println(month.getDisplayName(TextStyle.FULL, Locale.ENGLISH) + " - " + days + " days");
+        }
+
+        // Task 3: Check if today is Independence Day (15 August) and compare
+        MonthDay independenceDay = MonthDay.of(Month.AUGUST, 15);
+        LocalDate today = LocalDate.now();
+        MonthDay todayMonthDay = MonthDay.from(today);
+
+        if (todayMonthDay.equals(independenceDay)) {
+            System.out.println("\nToday is Independence Day (15th August)!");
+        } else if (todayMonthDay.isBefore(independenceDay)) {
+            System.out.println("\nIndependence day is yet to come this year.");
+        } else {
+            System.out.println("\nIndependence day was already celebrated this year.");
+        }
+
+        // Task 4: Format number using Italian and Korean Locales
+        double number = 123456.78;
+
+        // Italian number format
+        NumberFormat italianFormat = NumberFormat.getInstance(Locale.ITALY);
+        System.out.println("\nNumber formatted in Italian locale: " + italianFormat.format(number));
+
+        // Korean currency format
+        NumberFormat koreanCurrency = NumberFormat.getCurrencyInstance(Locale.KOREA);
+        System.out.println("Number formatted as Korean currency: " + koreanCurrency.format(number));
+    }
+}
